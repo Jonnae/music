@@ -1,0 +1,12 @@
+.playlist-container{
+  display: flex;/*使用弹性盒模型的布局 */
+  flex-wrap: wrap;  /*放不下的时候让它换行 */
+  justify-content: space-around;/*居中 */
+  margin-top: 10rpx;
+  flex-direction: row;/*row的方式布局 */
+}
+
+.img{
+  height:100%;
+  width:100%;
+}

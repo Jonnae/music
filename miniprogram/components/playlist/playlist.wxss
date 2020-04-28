@@ -1,0 +1,33 @@
+.playlist-container{
+  position: relative;
+  width: 220rpx;
+  padding-bottom: 20rpx;
+}
+
+.playlist-img{
+  width: 100%; /*充满它的父元素*/
+  height: 220rpx;
+  border-radius: 6rpx;
+}
+
+.playlist-playCount{
+  position: absolute;
+  right: 10rpx;
+  top: 4rpx;
+  font-size: 23rpx;
+  color: #fff;
+  
+}
+
+.playlist-name{
+  font-size: 25rpx;
+  line-height: 1.2;
+  padding: 2px 0 0 6px;
+
+
+  overflow : hidden;  /*必须结合的属性,当内容溢出元素框时发生的事情*/
+  text-overflow: ellipsis;  /*可以用来多行文本的情况下，用省略号“…”隐藏超出范围的文本 。*/
+  display: -webkit-box;  /*必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。*/
+  -webkit-line-clamp: 2; /*用来限制在一个块元素显示的文本的行数。*/
+  -webkit-box-orient: vertical; overflow-anchor: /*必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。*/
+}

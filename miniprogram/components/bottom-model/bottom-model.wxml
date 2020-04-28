@@ -1,0 +1,9 @@
+<!--components/bottom-model/bottom-model.wxml-->
+<view class="model" hidden="{{!modelShow}}">
+
+  <view class="panel"> 
+    <i class="iconfont icon-cancel-1-copy" bindtap="close"></i>
+    <!-- slot 插槽   具名插槽-->
+    <slot name="model-content"></slot> 
+  </view>
+</view>

@@ -1,0 +1,40 @@
+/* components/bottom-model/bottom-model.wxss */
+@import "iconfont.wxss";
+
+.model{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  text-align:  center;
+  background: rgb(0, 0,0, 0.6)
+}
+
+.panel{
+  position: absolute;
+  bottom: 0rpx;
+  left: 0;
+  width: 100%;
+  min-height: 300rpx;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+}
+
+.icon-cancel-1-copy{
+  position: absolute;
+  right: 10rpx;
+  top:10rpx;
+  padding: 20rpx; /*增加点击区域大小 */
+}
+
+.panel-bottom{
+  width: 200rpx;
+  height: 60rpx;
+  bottom: -50%;
+  font-size: 30rpx;
+  background: red;
+  color: #f8f8f8;
+  transform: translate(0,50%);
+}

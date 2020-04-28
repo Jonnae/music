@@ -1,0 +1,39 @@
+.musiclist-container{
+  display: flex;
+  align-items: center;
+  padding: 14rpx 20rpx;
+}
+
+.musiclist-index{
+  color: #888;
+  font-size: 30rpx;
+  width: 50rpx;
+}
+/*这里flex-grow的意思已经很明显了，就是索取父容器的剩余空间，默认值是0，就是三个子容器都不索取剩余空间。但是当B1设置为1的时候，剩余空间就会被分成一份，然后都给了B1。*/
+.musiclist-info{
+  flex-grow: 1;
+  width: 0;
+}
+
+.musiclist-name{
+  font-size: 30rpx;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+   white-space: nowrap;
+  margin-bottom: 10rpx;
+}
+
+.musiclist-alia {
+  color: #888;
+}
+
+.musiclist-singer {
+  font-size: 23rpx;
+  color: #888;
+}
+
+.playing view, .playing text {
+  color: #d43c33;
+}
+
