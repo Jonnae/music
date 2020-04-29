@@ -1,5 +1,5 @@
 // pages/blog/blog.js
-let keyword = '' 
+let keyword = ''
 Page({
 
   /**
@@ -7,60 +7,60 @@ Page({
    */
   data: {
     //控制弹出层是否显示
-    modelShow:false,
+    modelShow: false,
     //博客列表
-    blogList:[],
+    blogList: [],
   },
   //发布功能
-  onPublic(){
+  onPublic() {
     // this.setData({
     //   modelShow: true
     // })
-   // 判断用户是否授权
+    // 判断用户是否授权
     wx.getSetting({
-      success:(res)=>{
+      success: (res) => {
         console.log(res)
-        if (res.authSetting['scope.userInfo']){
+        if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
-            success:(res)=>{
-            // console.log(res)
-            this.onLoginSuccess({
-              detail:res.userInfo
-            })
+            success: (res) => {
+              // console.log(res)
+              this.onLoginSuccess({
+                detail: res.userInfo
+              })
             }
           })
-        }else{
+        } else {
           this.setData({
-             modelShow: true
+            modelShow: true
           })
         }
       }
     })
   },
 
-  onLoginSuccess(event){
+  onLoginSuccess(event) {
     console.log(event)
     const detail = event.detail
     wx.navigateTo({
       url: `../blog-edit/blog-edit?nickName=${detail.nickName}&avatarUrl=${detail.avatarUrl}`,
     })
   },
-  onLoginFail(){
-  wx.showModal({
-    title: '请授权',
-    content: '',
-  })
+  onLoginFail() {
+    wx.showModal({
+      title: '请授权',
+      content: '',
+    })
   },
-  goComment(event){
+  goComment(event) {
     console.log(event)
     wx.navigateTo({
       url: `../../pages/blog-comment/blog-comment?blogId=${event.target.dataset.blogid}`,
     })
   },
-  onSearch(event){
+  onSearch(event) {
     keyword = event.detail.keyword
     this.setData({
-      blogList:[]
+      blogList: []
     })
     this._loadBlogList(0)
   },
@@ -70,30 +70,30 @@ Page({
    */
   onLoad: function (options) {
     this._loadBlogList()
- 
+
   },
-//start = 0,es6语法,不传值就是0
+  //start = 0,es6语法,不传值就是0
   _loadBlogList(start = 0) {
     wx.showLoading({
       title: '加载中...',
     })
- // 调用名为 blog 的云函数，路由名为 list
- wx.cloud.callFunction({
-  // 要调用的云函数名称
-  name: 'blog',
-  // 传递给云函数的参数
-  data: {
-      start,
-      keyword,
-      count: 10,
-      $url: 'list', // 要调用的路由的路径，传入准确路径或者通配符*  
-        }
-    }).then(res=>{
-        this.setData({
-          blogList:this.data.blogList.concat(res.result)
-        })
-        wx.hideLoading()
-        wx.stopPullDownRefresh()
+    // 调用名为 blog 的云函数，路由名为 list
+    wx.cloud.callFunction({
+      // 要调用的云函数名称
+      name: 'blog',
+      // 传递给云函数的参数
+      data: {
+        start,
+        keyword,
+        count: 10,
+        $url: 'list', // 要调用的路由的路径，传入准确路径或者通配符*  
+      }
+    }).then(res => {
+      this.setData({
+        blogList: this.data.blogList.concat(res.result)
+      })
+      wx.hideLoading()
+      wx.stopPullDownRefresh()
     })
   },
 
@@ -130,7 +130,7 @@ Page({
    */
   onPullDownRefresh: function () {
     this.setData({
-      blogList:[]
+      blogList: []
     })
     this._loadBlogList(0)
   },
@@ -148,8 +148,8 @@ Page({
   onShareAppMessage: function (event) {
     const blogObj = event.target.dataset.blog
     return {
-      title:blogObj.content,
-      path:`/pages/blog-comment/blog-comment?blogId=${blogObj._id}`,
+      title: blogObj.content,
+      path: `/pages/blog-comment/blog-comment?blogId=${blogObj._id}`,
       //imageUrl:
     }
   }
