@@ -4,12 +4,11 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {
-  },
-  onTapQrCode(){
+  data: {},
+  onTapQrCode() {
     wx.cloud.callFunction({
-      name:'getcode'
-    }).then(res=>{
+      name: 'getcode'
+    }).then(res => {
       // console.log(res)
       wx.previewImage({
         urls: [res.result],
